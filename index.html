@@ -67,29 +67,38 @@
         }
 
         :root {
-            /* SNQ Brand Colors */
-            --primary: #ff6b35;
-            --primary-light: #ff8a5c;
-            --secondary: #e91e63;
-            --accent: #4caf50;
-            --background: #fef7f0;
+            /* SNQ Vibrant Fruit Colors - HSL */
+            --background: hsl(45, 100%, 97%);
+            --foreground: hsl(222.2, 84%, 4.9%);
+            
+            --primary: hsl(15, 88%, 55%); /* Orange jelly */
+            --primary-light: hsl(25, 95%, 65%);
+            --primary-glow: hsl(35, 100%, 70%);
+            
+            --secondary: hsl(340, 85%, 65%); /* Raspberry pink */
+            --accent: hsl(125, 65%, 55%); /* Fresh green */
+            
             --white: #ffffff;
-            --black: #1a1a1a;
-            --gray-100: #f5f5f5;
-            --gray-600: #757575;
-            --gray-800: #424242;
+            --card-bg: hsl(0, 0%, 100%);
+            --muted: hsl(45, 40%, 95%);
+            --muted-foreground: hsl(215.4, 16.3%, 46.9%);
             
-            /* Gradients */
-            --gradient-hero: linear-gradient(135deg, var(--primary), var(--secondary));
-            --gradient-card: linear-gradient(145deg, var(--white), var(--gray-100));
+            /* Vibrant Gradients */
+            --gradient-hero: linear-gradient(135deg, hsl(15, 88%, 55%), hsl(340, 85%, 65%));
+            --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%), hsl(45, 40%, 95%));
+            --gradient-accent: linear-gradient(120deg, hsl(125, 65%, 55%), hsl(180, 70%, 60%));
+            --gradient-purple: linear-gradient(135deg, hsl(270, 75%, 65%), hsl(300, 80%, 70%));
             
-            /* Shadows */
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
-            --shadow-lg: 0 8px 25px rgba(255,107,53,0.3);
+            /* Glowing Shadows */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 20px rgba(255,107,53,0.15);
+            --shadow-lg: 0 15px 40px rgba(255,107,53,0.25);
+            --shadow-glow: 0 0 40px hsla(25, 95%, 65%, 0.4);
+            --shadow-hover: 0 20px 50px rgba(255,107,53,0.3);
             
-            /* Transitions */
+            /* Smooth Transitions */
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         html {
@@ -100,8 +109,9 @@
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
-            color: var(--black);
+            color: var(--foreground);
             background-color: var(--background);
+            font-weight: 500;
         }
 
         .container {
@@ -230,8 +240,10 @@
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23ff6b35" width="1200" height="600"/><circle fill="%23e91e63" cx="200" cy="150" r="100" opacity="0.7"/><circle fill="%234caf50" cx="800" cy="300" r="80" opacity="0.6"/><circle fill="%23ff8a5c" cx="1000" cy="100" r="60" opacity="0.8"/></svg>');
+            background: linear-gradient(135deg, 
+                        hsl(15, 88%, 55%) 0%, 
+                        hsl(340, 85%, 65%) 50%,
+                        hsl(270, 75%, 65%) 100%);
             background-size: cover;
             background-position: center;
             display: flex;
@@ -240,10 +252,43 @@
             text-align: center;
             color: var(--white);
             padding: 80px 20px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, hsla(25, 95%, 65%, 0.3), transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, hsla(340, 85%, 65%, 0.25), transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
         }
 
         .hero-content {
             max-width: 800px;
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -285,11 +330,31 @@
             background: var(--gradient-hero);
             color: var(--white);
             box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(255,107,53,0.4);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-hover);
         }
 
         .btn-outline {
@@ -336,39 +401,60 @@
         }
 
         .product-card {
-            background: var(--gradient-card);
-            border-radius: 20px;
+            background: var(--card-bg);
+            border-radius: 24px;
             overflow: hidden;
             box-shadow: var(--shadow-md);
-            transition: var(--transition);
+            transition: var(--transition-bounce);
             cursor: pointer;
+            border: 1px solid rgba(255, 107, 53, 0.1);
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
         }
 
         .product-header {
-            height: 160px;
+            height: 180px;
             position: relative;
             overflow: hidden;
         }
 
-        .product-header.strawberry { background: linear-gradient(135deg, #ff6b9d, #ff8a80); }
-        .product-header.lychee { background: linear-gradient(135deg, #ba68c8, #f48fb1); }
-        .product-header.blackcurrant { background: linear-gradient(135deg, #5e35b1, #7b1fa2); }
-        .product-header.grape { background: linear-gradient(135deg, #66bb6a, #ab47bc); }
-        .product-header.lemon { background: linear-gradient(135deg, #ffeb3b, #ff9800); }
-        .product-header.apple { background: linear-gradient(135deg, #66bb6a, #4caf50); }
+        .product-header.strawberry { 
+            background: linear-gradient(135deg, hsl(350, 85%, 70%), hsl(15, 90%, 65%));
+        }
+        .product-header.lychee { 
+            background: linear-gradient(135deg, hsl(300, 70%, 70%), hsl(330, 75%, 75%));
+        }
+        .product-header.blackcurrant { 
+            background: linear-gradient(135deg, hsl(270, 65%, 45%), hsl(290, 70%, 50%));
+        }
+        .product-header.grape { 
+            background: linear-gradient(135deg, hsl(125, 60%, 60%), hsl(275, 70%, 65%));
+        }
+        .product-header.lemon { 
+            background: linear-gradient(135deg, hsl(50, 95%, 60%), hsl(35, 95%, 60%));
+        }
+        .product-header.apple { 
+            background: linear-gradient(135deg, hsl(125, 65%, 55%), hsl(145, 70%, 50%));
+        }
 
         .product-icon {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 60px;
-            opacity: 0.3;
+            font-size: 80px;
+            opacity: 0.4;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+            transition: var(--transition-bounce);
+        }
+
+        .product-card:hover .product-icon {
+            transform: translate(-50%, -50%) scale(1.2) rotate(10deg);
+            opacity: 0.6;
         }
 
         .product-content {
@@ -435,9 +521,17 @@
         .stat-card {
             text-align: center;
             background: var(--gradient-card);
-            padding: 30px 20px;
-            border-radius: 15px;
-            box-shadow: var(--shadow-sm);
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-bounce);
+            border: 2px solid transparent;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
         }
 
         .stat-number {
@@ -601,13 +695,16 @@
             text-align: center;
             background: var(--gradient-card);
             padding: 40px 30px;
-            border-radius: 20px;
+            border-radius: 24px;
             box-shadow: var(--shadow-md);
-            transition: var(--transition);
+            transition: var(--transition-bounce);
+            border: 2px solid transparent;
         }
 
         .contact-card:hover {
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
         }
 
         .contact-icon {
