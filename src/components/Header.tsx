@@ -18,13 +18,12 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center">
             <img 
               src={snqLogo} 
               alt="SNQ" 
-              className="h-8 w-auto transition-bounce hover:scale-105" 
+              className="h-12 w-auto transition-bounce hover:scale-105" 
             />
-            <div className="text-xl font-bold text-gradient">SNQ</div>
           </div>
 
           {/* Desktop Navigation */}
