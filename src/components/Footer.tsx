@@ -13,7 +13,7 @@ const Footer = () => {
               <img 
                 src={snqLogo} 
                 alt="SNQ" 
-                className="h-30 w-auto filter brightness-0 invert" 
+                className="h-25 w-auto filter brightness-0 invert" 
               />
               <div className="text-2xl font-bold">SNQ</div>
             </div>
