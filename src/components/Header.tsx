@@ -22,7 +22,7 @@ const Header = () => {
             <img 
               src={snqLogo} 
               alt="SNQ" 
-              className="h-16 w-auto transition-bounce hover:scale-105" 
+              className="h-20 w-auto transition-bounce hover:scale-105" 
             />
           </div>
 
