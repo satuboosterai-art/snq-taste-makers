@@ -88,22 +88,14 @@ const Contacts = () => {
                   Стать партнёром
                 </Button>
                 <Button 
-                  variant="secondary"
+                  variant="outline" 
                   size="lg"
-                  className="shadow-secondary"
+                  className="border-primary text-primary hover:bg-primary hover:text-white transition-smooth"
                   asChild
                 >
                   <a href="/presentation.snq.pdf" download>
                     Скачать презентацию
                   </a>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="border-primary text-primary hover:bg-primary hover:text-white transition-smooth"
-                  onClick={() => window.open('https://wa.link/huk821', '_blank')}
-                >
-                  Связаться с нами
                 </Button>
               </div>
             </CardContent>

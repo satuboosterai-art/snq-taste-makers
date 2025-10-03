@@ -15,7 +15,6 @@ const Footer = () => {
                 alt="SNQ" 
                 className="h-24 w-auto filter brightness-0 invert" 
               />
-              <div className="text-2xl font-bold">SNQ</div>
             </div>
             <p className="text-white/80 mb-4 max-w-md">
               Доставляем лучшее. Расширяем границы.
