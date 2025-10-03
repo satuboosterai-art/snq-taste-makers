@@ -74,6 +74,7 @@ const Cooperation = () => {
                     variant="hero" 
                     size="lg" 
                     className="w-full shadow-glow hover:shadow-primary"
+                    onClick={() => window.open('https://wa.link/huk821', '_blank')}
                   >
                     Связаться с нами
                   </Button>

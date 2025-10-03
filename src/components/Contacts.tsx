@@ -83,6 +83,7 @@ const Contacts = () => {
                   variant="hero"
                   size="lg"
                   className="shadow-glow hover:shadow-primary"
+                  onClick={() => window.open('https://wa.link/huk821', '_blank')}
                 >
                   Стать партнёром
                 </Button>
@@ -90,8 +91,9 @@ const Contacts = () => {
                   variant="outline" 
                   size="lg"
                   className="border-primary text-primary hover:bg-primary hover:text-white transition-smooth"
+                  onClick={() => window.open('https://wa.link/huk821', '_blank')}
                 >
-                  Скачать презентацию
+                  Связаться с нами
                 </Button>
               </div>
             </CardContent>
