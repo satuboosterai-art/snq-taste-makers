@@ -88,6 +88,16 @@ const Contacts = () => {
                   Стать партнёром
                 </Button>
                 <Button 
+                  variant="secondary"
+                  size="lg"
+                  className="shadow-secondary"
+                  asChild
+                >
+                  <a href="/presentation.snq.pdf" download>
+                    Скачать презентацию
+                  </a>
+                </Button>
+                <Button 
                   variant="outline" 
                   size="lg"
                   className="border-primary text-primary hover:bg-primary hover:text-white transition-smooth"
